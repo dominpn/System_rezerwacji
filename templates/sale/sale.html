@@ -1,0 +1,34 @@
+{% extends "main.html" %}
+{% block title %}Lista sal{% endblock %}
+{% block content %}
+        <div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Nr Sali</th>
+                            <th>Pojemnosc</th>
+                            <th>Pietro</th>
+                            <th>Modyfikuj</th>
+                            <th>Usun</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for sa in sale %}
+                    <form method="get">
+                        <tr>
+
+                            <td>{{ sa.ID_Sali }}</td>
+                            <td>{{ sa.Pojemnosc }}</td>
+                            <td>{{ sa.Pietro }}</td>
+                            <td> <a href = "{{ '/sale/%s'%sa.ID_Sali }}">Zmodyfikuj</a></td>
+                            <td > <a href = "{{ '/sale/%s/usun'%sa.ID_Sali }}">Usun</a></td>
+                        </tr>
+                    </form>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        <form action="{{'/sale/dodaj_sale'}}">
+    <button type="submit" class="btn btn-primary">Dodaj nowa sale</button>
+        </form>
+{% endblock %}

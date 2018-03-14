@@ -1,0 +1,34 @@
+{% extends "main.html" %}
+{% block title %}dodaj klienta{% endblock %}
+{% block content %}
+<form method="post">
+  <div class="form-group">
+    <label>Imie</label>
+    <input type="text" class="form-control" name="Imie">
+
+  </div>
+    <div class="form-group">
+    <label>Naziwsko</label>
+    <input type="text" class="form-control" name="Nazwisko">
+
+  </div>
+    <div class="form-group">
+    <label>Email</label>
+    <input type="text" class="form-control" name="Email">
+
+  </div>
+    <div class="form-group">
+    <label>Karnet data rozpoczecia</label>
+    <input type="text" class="form-control" name="Karnet_rozpoczecie" placeholder="RRRR-MM-DD">
+
+  </div>
+    <div class="form-group">
+    <label>Karnet_data_zakonczenia</label>
+    <input type="text" class="form-control" name="Karnet_zakonczenie" placeholder="RRRR-MM-DD">
+
+  </div>
+
+  <button type="submit" class="btn btn-primary">Dodaj</button></form>
+    <button type="submit" class="btn btn-primary">Dodaj procedura</button>
+</form>
+{% endblock %}

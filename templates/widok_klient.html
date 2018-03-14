@@ -1,0 +1,79 @@
+<html>
+<head>
+    <meta name="viewport" content = "width=device-width, initial-scale=1.0">
+    <title>System rezerwacji</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+
+</head>
+<body>
+{% with errors = get_flashed_messages() %}
+{% if errors %}
+<div class="alert-message block-message error">
+    {%- for msg in errors %}
+    <div class="alert alert-warning alert-dismissible" role="alert">
+		  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+        <strong>{{msg}}</strong>
+    </div>
+    {% endfor -%}
+
+</div>
+{% endif %}
+{% endwith %}
+<ul class="nav nav-tabs">
+    <li role="presentation"><a href="/wyloguj">Wyloguj</a></li>
+</ul>
+<h4>Lista zajęć w których uczestniczysz</h4>
+        <div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Nazwa</th>
+                            <th>Wypisz się</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for za in zajecia %}
+                    <form method="get">
+                        <tr>
+
+                            <td>{{ za.Nazwa }}</td>
+                            <td><a href="{{'/ucz/%s'%za.ID_Zajecia}}">Wypisz się</a></td>
+                        </tr>
+                    </form>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+<h4>Lista zajęć na które oczekujesz</h4>
+        <div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Nazwa</th>
+                            <th>Wypisz się</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for li in lista %}
+                    <form method="get">
+                        <tr>
+                            <td>{{ li.Nazwa }}</td>
+                            <td><a href="{{'/lista/%s'%li.ID_Zajecia}}">Wypisz się</a></td>
+                        </tr>
+                    </form>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+<h4>Lista zajęć na które możesz się zapisać</h4>
+<form method="post">
+<select class="form-control" id="Zaj" name="Zaj">
+    {% for ws in wszystkie %}
+        <option>{{ws.Nazwa}}</option>
+    {% endfor %}
+      </select>
+<button type="submit" class="btn btn-primary">Zapisz się</button>
+</form>
+
+</body>
+</html>

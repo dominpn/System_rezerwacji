@@ -1,0 +1,19 @@
+{% extends "main.html" %}
+{% block title %}modyfikuj sale{% endblock %}
+{% block content %}
+<form method="post">
+  <div class="form-group">
+    <label>Pojemnosc</label>
+    <input type="text" class="form-control" name="Pojemnosc" value={{sala.Pojemnosc}}>
+
+  </div>
+    <div class="form-group">
+    <label>Pietro</label>
+    <input type="text" class="form-control" name="Pietro" value={{sala.Pietro}}>
+
+  </div>
+
+  <button type="submit" class="btn btn-primary">Modyfikuj</button>
+    <button type="submit" class="btn btn-primary">Modyfikuj procedura</button>
+</form>
+{% endblock %}

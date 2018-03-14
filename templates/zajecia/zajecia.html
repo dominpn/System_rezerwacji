@@ -1,0 +1,45 @@
+{% extends "main.html" %}
+{% block title %}lista zajec{% endblock %}
+{% block content %}
+        <div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Nazwa</th>
+                            <th>Ilość miejsc</th>
+                            <th>Trener</th>
+                            <th>Godzina rozpoczecia</th>
+                            <th>Godzina zakonczenia</th>
+                            <th>Sala</th>
+                            <th>Modyfikuj</th>
+                            <th>Usun</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for za in zajecia %}
+                    <form method="get">
+                        <tr>
+
+                            <td>{{ za.Nazwa }}</td>
+                            <td>{{ za.Ilosc_miejsc }}</td>
+                            {% for tr in trenerzy %}
+                            {% if tr.ID_Trenera == za.ID_Trenera %}
+                            <td>{{ tr.Imie }} {{tr.Nazwisko}}</td>
+                            {% endif %}
+                            {% endfor %}
+                            <td>{{ za.Godzina_rozpoczecia }}</td>
+                            <td>{{ za.Godzina_zakonczenia }}</td>
+                            <td>{{ za.ID_Sali }}</td>
+
+                            <td> <a href = "{{ '/zajecia/%s'%za.ID_Zajecia }}">Zmodyfikuj</a></td>
+                            <td > <a href = "{{ '/zajecia/%s/usun'%za.ID_Zajecia }}">Usun</a></td>
+                        </tr>
+                    </form>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        <form action="{{'/zajecia/dodaj_zajecie'}}">
+    <button type="submit" class="btn btn-primary">Dodaj nowe zajecie</button>
+        </form>
+{% endblock %}

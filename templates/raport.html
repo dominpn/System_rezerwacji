@@ -1,0 +1,41 @@
+{% extends "main.html" %}
+{% block title %}dodaj klienta{% endblock %}
+{% block content %}
+        <h1>Lista obecnosci na zajeciach dla trenera {{trener.Imie}} {{trener.Nazwisko}}</h1>
+        {% for li in lista %}
+        {% if trener.ID_Trenera == li.ID_Trenera %}
+        <h4>{{li.Nazwa}}</h4>
+
+        <div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Imie</th>
+                            <th>Naziwsko</th>
+                            <th>Był</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for uc in uczestnicy %}
+                    {% if uc.Nazwa == li.Nazwa %}
+                    <form method="get">
+                        <tr>
+
+                            <td>{{ uc.Imie }}</td>
+                            <td>{{ uc.Nazwisko }}</td>
+                            <td ><select class="form-control">
+                                <option>Nieobecny</option>
+                                <option>Obecny</option>
+                            </select>
+                            </td>
+                        </tr>
+                    </form>
+                    {% endif %}
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% endif %}
+            {% endfor %}
+<button type="submit" class="btn btn-primary">Zatwierdz</button></form>
+{% endblock %}

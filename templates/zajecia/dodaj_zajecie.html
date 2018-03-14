@@ -1,0 +1,48 @@
+{% extends "main.html" %}
+{% block title %}dodaj zajecie{% endblock %}
+{% block content %}
+<form method="post">
+  <div class="form-group">
+    <label>Nazwa</label>
+    <input type="text" class="form-control" name="Nazwa">
+
+  </div>
+    <div class="form-group">
+    <label>Ilość miejsc</label>
+    <input type="text" class="form-control" name="Ilosc_miejsc">
+
+  </div>
+    <div class="form-group">
+       <label for="Trener">Trener</label>
+      <select class="form-control" id="Trener" name="Trener">
+      {% for tr in trenerzy %}
+        <option>{{tr.Imie}} {{tr.Nazwisko}}</option>
+      {% endfor %}
+      </select>
+
+  </div>
+    <div class="form-group">
+    <label>Godzina rozpoczecia</label>
+    <input type="text" class="form-control" name="Godzina_rozpoczecia" placeholder="GG.MM">
+
+  </div>
+    <div class="form-group">
+    <label>Godzina zakonczenia</label>
+    <input type="text" class="form-control" name="Godzina_zakonczenia" placeholder="GG.MM">
+
+  </div>
+    <div class="form-group">
+
+        <label for="Sala">Sala</label>
+      <select class="form-control" id="Sala" name="Sala">
+      {% for sa in sale %}
+        <option>{{sa.ID_Sali}}</option>
+      {% endfor %}
+      </select>
+
+  </div>
+
+  <button type="submit" class="btn btn-primary">Dodaj</button></form>
+    <button type="submit" class="btn btn-primary">Dodaj procedura</button>
+</form>
+{% endblock %}

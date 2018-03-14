@@ -1,0 +1,38 @@
+{% extends "main.html" %}
+{% block title %}dodaj klienta{% endblock %}
+{% block content %}
+        <div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Imie</th>
+                            <th>Naziwsko</th>
+                            <th>Adres email</th>
+                            <th>Karnet data rozpoczecia</th>
+                            <th>Karnet data zakonczenia</th>
+                            <th>Modyfikuj</th>
+                            <th>Usun</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for kl in klienci %}
+                    <form method="get">
+                        <tr>
+
+                            <td>{{ kl.Imie }}</td>
+                            <td>{{ kl.Nazwisko }}</td>
+                            <td>{{ kl.Adres_email }}</td>
+                            <td>{{ kl.Karnet_data_rozpoczecia }}</td>
+                            <td>{{ kl.Karnet_data_zakonczenia }}</td>
+                            <td> <a href = "{{ '/klienci/%s'%kl.ID_Klienta }}">Zmodyfikuj</a></td>
+                            <td > <a href = "{{ '/klienci/%s/usun'%kl.ID_Klienta }}">Usun</a></td>
+                        </tr>
+                    </form>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        <form action="{{'/klienci/dodaj'}}">
+    <button type="submit" class="btn btn-primary">Dodaj nowego klienta</button>
+        </form>
+{% endblock %}

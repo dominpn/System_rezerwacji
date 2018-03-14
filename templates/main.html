@@ -1,0 +1,36 @@
+<html>
+<head>
+<meta name="viewport" content = "width=device-width, initial-scale=1.0">
+		<title>System rezerwacji {% block title %}{% endblock %}</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+</head>
+<body>
+{% with errors = get_flashed_messages() %}
+{% if errors %}
+<div class="alert-message block-message error">
+    {%- for msg in errors %}
+    <div class="alert alert-warning alert-dismissible" role="alert">
+		  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+        <strong>{{msg}}</strong>
+    </div>
+    {% endfor -%}
+
+</div>
+{% endif %}
+{% endwith %}
+
+
+
+  <ul class="nav nav-tabs">
+  <li role="presentation"><a href="/klienci">Klienci</a></li>
+  <li role="presentation"><a href="/trenerzy">Trenerzy</a></li>
+  <li role="presentation"><a href="/sale">Sale</a></li>
+  <li role="presentation"><a href="/zajecia">Zajecia</a></li>
+  <li role="presentation"><a href="/sprzet">Sprzet</a></li>
+  <li role="presentation"><a href="/wyloguj">Wyloguj</a></li>
+</ul>
+
+<div id="content">{% block content %}{% endblock %}</div>
+
+</body>
+</html>

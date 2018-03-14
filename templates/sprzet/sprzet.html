@@ -1,0 +1,35 @@
+{% extends "main.html" %}
+{% block title %}lista sprzetow{% endblock %}
+{% block content %}
+        <div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Nazwa</th>
+                            <th>Ilość</th>
+                            <th>Sala</th>
+                            <th>Modyfikuj</th>
+                            <th>Usun</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for sp in sprzet %}
+                    <form method="get">
+                        <tr>
+
+                            <td>{{ sp.Nazwa }}</td>
+                            <td>{{ sp.Ilosc }}</td>
+                            <td>{{ sp.ID_Sali }}</td>
+
+                            <td> <a href = "{{ '/sprzet/%s'%sp.ID_Sprzetu }}">Zmodyfikuj</a></td>
+                            <td > <a href = "{{ '/sprzet/%s/usun'%sp.ID_Sprzetu }}">Usun</a></td>
+                        </tr>
+                    </form>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        <form action="{{'/sprzet/dodaj_sprzet'}}">
+    <button type="submit" class="btn btn-primary">Dodaj nowy sprzet</button>
+        </form>
+{% endblock %}
